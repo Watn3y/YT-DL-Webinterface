@@ -21,6 +21,6 @@ Downloading Playlists is currently not supported.
 
 You can set a contact email, Name or whatever you want in the __footer__ of the __index.php__.
   
-### Credits
+### Special thanks
 
 -  [AlexZorzi](https://github.com/AlexZorzi), for his massive help during developement
