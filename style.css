@@ -1,0 +1,34 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background-color: #121212;
+  color: white;
+  text-align: center;
+  margin-top: 5%;
+  padding: 0 0 150px;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+input {
+  margin-top: 10px;
+}
+
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+}
+
+div {
+  border-radius: 5px;
+  padding: 20px;
+}
