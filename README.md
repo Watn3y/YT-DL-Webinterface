@@ -3,7 +3,7 @@ A simple and fast web interface for downloading music using [youtube-dl](https:/
 
 Copyright (C) 2021 [Watn3y](https://github.com/Watn3y/)
 
-> Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/LICENSE.md)
+> Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/blob/master/LICENSE)
 
 ## How it works
 We take the users input from __index.php__. Then, in __api.php__, we check if the YouTube URL and audioformat are valid. If the requested file is already saved it get's served. If it isn't we download it using youtube-dl and serve it.
