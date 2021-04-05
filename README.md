@@ -5,7 +5,7 @@ Copyright (C) 2021 [Watn3y](https://github.com/Watn3y/)
 
 > Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/blob/master/LICENSE)
 > 
-![image](https://user-images.githubusercontent.com/64812615/113526977-43ded780-95bc-11eb-8111-cb9cd0054ba8.png)
+![image](https://watn3y.net/site-demo.png)
 
 The design is not finalized. See [this](https://github.com/Watn3y/YT-DL-Webinterface/issues/1)
 
