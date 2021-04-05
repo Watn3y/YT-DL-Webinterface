@@ -3,22 +3,88 @@ html {
   min-height: 100%;
 }
 body {
-  background-color: #121212;
+  background-color: #131516;
   color: white;
   text-align: center;
-  margin-top: 5%;
-  padding: 0 0 150px;
+  margin: 0; 
+  padding: 0;
 }
 
 h1 {
   font-family: "Roboto", sans-serif;
-  color: white;
+  color: #FFFFFF;
 }
 
-input {
-  margin-top: 10px;
+#howto {
+  font-family: "Roboto", sans-serif;
+  width: 40%;
+  margin: auto;
+  margin-top: 5%;
+  background-color: #268EDF;
+  padding: 15px;
+  color: #FFFFFF;
 }
 
+#form{
+  border-radius: 5px;
+  width: 40%;
+  margin: auto;
+  background-color: #181a1bd0;
+  padding: 15px;
+}
+
+input[type=text] {
+  width: 78%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
+select {
+  width: 20%;
+  background-color: #ffffff;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+select:hover {
+  background-color: #ffffffda;
+}
+input[type=button] {
+  width: 49%;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #ffffffda;
+}
+
+input[type=reset] {
+  width: 49%;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+input[type=reset]:hover {
+  background-color: #ffffffda;
+}
 
 .footer {
   position: absolute;
@@ -26,9 +92,4 @@ input {
   bottom: 0;
   height: 150px;
   width: 100%;
-}
-
-div {
-  border-radius: 5px;
-  padding: 20px;
 }

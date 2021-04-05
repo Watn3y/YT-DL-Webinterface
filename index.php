@@ -25,8 +25,7 @@ session_destroy();
 
 <body>
   <h1>Youtube Music Downloader</h1>
-    <p>Paste a URL and download your Music</p>
-
+  <p id="howto">Paste a URL and download your Music</p>
   <form action="api.php" method="POST" id="form">
     <div class="form"></div>
     <select id="format" name="audioformat">
@@ -34,26 +33,23 @@ session_destroy();
       <option value="mp3">mp3</option>
       <option value="m4a">m4a</option>
     </select>
-    <input type="text" id="URL" name="URL" />
+    <input type="text" id="URL" name="URL" placeholder="URL..." />
     <br />
-
-
-    <input type="button" onclick="send()" value="download" />
+    <input type="reset" name="Reset">
+    <input type="button" onclick="send()" value="Download" />
     </div>
   </form>
   <footer class="footer">
     <p></p>
-  
 
-  <script>
-  
-  function send(){
-    document.getElementById("form").submit();
-    document.getElementById("form").reset();
 
-  }
+    <script>
+      function send() {
+        document.getElementById("form").submit();
+        document.getElementById("form").reset();
 
-</script>
+      }
+    </script>
 </body>
 
 </html>

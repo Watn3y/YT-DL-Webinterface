@@ -14,7 +14,7 @@ if (isset($_POST["URL"]) && $_POST["URL"] == "") {
 
 logF(date("Y-m-d h:i:sa").": ip: ".$_SERVER['REMOTE_ADDR']." AF: ".(!$errFormat ? $_POST["audioformat"] : "null")." URL: ".(!$errURL ? $_POST["URL"] : "null"));
 if ($errFormat || $errURL) {
-    header("Location: ./index.php");
+    header("Location: /");
 }
 $audioFormat = $_POST["audioformat"];
 $URL = $_POST["URL"];
@@ -58,7 +58,7 @@ if ($isLinkValid) {
 
 } else {
     $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>'; 
-    header("Location: ./index.php");
+    header("Location: /");
 }
 
 function logF($text){
