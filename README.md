@@ -4,8 +4,8 @@ A simple and fast web interface for downloading music using [youtube-dl](https:/
 Copyright (C) 2021 [Watn3y](https://github.com/Watn3y/)
 
 > Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/blob/master/LICENSE)
-> 
-![image](https://watn3y.net/site-demo.png)
+
+> ![site-demo](https://user-images.githubusercontent.com/64812615/113632442-71368e80-966b-11eb-985d-87876880f71e.png)
 
 The design is not finalized. See [this](https://github.com/Watn3y/YT-DL-Webinterface/issues/1)
 
