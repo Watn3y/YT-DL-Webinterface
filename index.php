@@ -32,6 +32,7 @@ session_destroy();
       <option value="opus" default>opus</option>>opus</option>
       <option value="mp3">mp3</option>
       <option value="m4a">m4a</option>
+      <option value="mp4">mp4</option>
     </select>
     <input type="text" id="URL" name="URL" placeholder="URL..." />
     <br />

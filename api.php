@@ -35,7 +35,12 @@ switch ($audioFormat) {
         $query = "youtube-dl --no-playlist --max-filesize 200m --add-metadata --prefer-ffmpeg --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
-
+        
+    case 'mp4':
+        $query = "youtube-dl --no-playlist --max-filesize 2G --add-metadata --prefer-ffmpeg --output \"files/%(id)s.%(ext)s\" --format mp4";
+        $audioFormat = 'mp4';
+        break;
+        
     default:
         $query = "youtube-dl --no-playlist --max-filesize 200m --add-metadata --prefer-ffmpeg --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
