@@ -2,6 +2,7 @@
 A simple and fast web interface for downloading music using [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 
 Copyright (C) 2021 [Watn3y](https://github.com/Watn3y/)
+Copyright (C) 2021 [AlexZorzi](https://github.com/AlexZorzi)
 
 > Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/blob/master/LICENSE)
 
@@ -25,7 +26,3 @@ Downloading Playlists is currently not supported.
 - FFmpeg
 
 You can set a contact email, Name or whatever you want in the __footer__ of the __index.php__.
-  
-### Special thanks
-
--  [AlexZorzi](https://github.com/AlexZorzi), for his massive help during developement
