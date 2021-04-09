@@ -8,11 +8,11 @@ if (isset($_POST["audioformat"]) && $_POST["audioformat"] == "") {
 }
 
 if (isset($_POST["URL"]) && $_POST["URL"] == "") {
-    $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>'; 
+    $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>';
     $errURL = true;
 }
 
-logF(date("Y-m-d h:i:sa").": ip: ".$_SERVER['REMOTE_ADDR']." AF: ".(!$errFormat ? $_POST["audioformat"] : "null")." URL: ".(!$errURL ? $_POST["URL"] : "null"));
+logF(date("Y-m-d h:i:sa") . ": ip: " . $_SERVER['REMOTE_ADDR'] . " AF: " . (!$errFormat ? $_POST["audioformat"] : "null") . " URL: " . (!$errURL ? $_POST["URL"] : "null"));
 if ($errFormat || $errURL) {
     header("Location: index.php");
 }
@@ -22,27 +22,27 @@ $URL = $_POST["URL"];
 
 switch ($audioFormat) {
     case 'mp3':
-        $query = "youtube-dl --no-playlist --max-filesize 200m --add-metadata --prefer-ffmpeg --output \"files/%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
+        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
         $audioFormat = 'mp3';
         break;
 
     case 'm4a':
-        $query = "youtube-dl --no-playlist --max-filesize 200m --add-metadata --prefer-ffmpeg --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
+        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
         break;
 
     case 'opus':
-        $query = "youtube-dl --no-playlist --max-filesize 200m --add-metadata --prefer-ffmpeg --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
+        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
-        
+
     case 'mp4':
-        $query = "youtube-dl --no-playlist --max-filesize 2G --add-metadata --prefer-ffmpeg --output \"files/%(id)s.%(ext)s\" --format mp4";
+        $query = "youtube-dl --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format mp4";
         $audioFormat = 'mp4';
         break;
-        
+
     default:
-        $query = "youtube-dl --no-playlist --max-filesize 200m --add-metadata --prefer-ffmpeg --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
+        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
 }
@@ -51,22 +51,21 @@ $isLinkValid = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&
 if ($isLinkValid) {
     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $URL, $match);
     $youtube_id = $match[1];
-    $file = "./files/$youtube_id.$audioFormat";
-    if(!file_exists($file)){
+    $output = glob("files/*.$youtube_id.$audioFormat");
+    if (count($output) == 0) {
         exec($query . " " . $URL);
     }
-    header("Content-type: octet/stream");
-    header("Content-disposition: attachment; filename=" . $file . ";");
-    header("Content-Length: " . filesize($file));
-    readfile($file);
-    exit;
-
+    $filename = glob("files/*.$youtube_id.$audioFormat")[0];
+    header("Content-type: octet/stream; charset=utf-8");
+    header("Content-disposition: attachment; filename=" . str_replace($youtube_id . ".", "", $filename) . ";");
+    header("Content-Length: " . filesize($filename));
+    readfile($filename);
 } else {
-    $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>'; 
+    $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>';
     header("Location: index.php");
 }
 
-function logF($text){
-    file_put_contents('log.txt', $text.PHP_EOL , FILE_APPEND | LOCK_EX);
-
+function logF($text)
+{
+    file_put_contents('log.txt', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
 }
