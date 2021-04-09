@@ -29,10 +29,10 @@ session_destroy();
   <form action="api.php" method="POST" id="form">
     <div class="form"></div>
     <select id="format" name="audioformat">
-      <option value="opus" default>opus</option>>opus</option>
-      <option value="mp3">mp3</option>
-      <option value="m4a">m4a</option>
-      <option value="mp4">mp4</option>
+      <option value="opus" default>Audio: opus</option>
+      <option value="mp3">Audio: mp3</option>
+      <option value="m4a">Audio: m4a</option>
+      <option value="mp4">Video: mp4</option>
     </select>
     <input type="text" id="URL" name="URL" placeholder="URL..." />
     <br />
