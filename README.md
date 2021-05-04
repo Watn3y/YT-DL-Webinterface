@@ -6,9 +6,9 @@ Copyright (C) 2021 [AlexZorzi](https://github.com/AlexZorzi)
 
 > Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/blob/master/LICENSE)
 
-> ![site-demo](https://user-images.githubusercontent.com/64812615/113632442-71368e80-966b-11eb-985d-87876880f71e.png)
+> ![screenshot](https://user-images.githubusercontent.com/64812615/113632442-71368e80-966b-11eb-985d-87876880f71e.png)
 
-The design is not finalized. See [this](https://github.com/Watn3y/YT-DL-Webinterface/issues/1)
+#### A demo site can be found [here](https://ytdl.watn3y.net/)
 
 ## How it works
 We take the users input from __index.php__. Then, in __api.php__, we check if the YouTube URL and audioformat are valid. If the requested file is already saved it get's served. If it isn't we download it using youtube-dl and serve it.
