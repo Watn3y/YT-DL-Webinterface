@@ -14,7 +14,7 @@ Copyright (C) 2021 [AlexZorzi](https://github.com/AlexZorzi)
 We take the users input from __index.php__. Then, in __api.php__, we check if the YouTube URL and audioformat are valid. If the requested file is already saved it get's served. If it isn't we download it using youtube-dl and serve it.
 A log of all requests is stored in __log.txt__.
 
-Make sure to set appropriate permission for the __log.txt__
+Make sure to set appropriate permission for the __log.txt__ and __files/__ folder.
 
 ### How it doesn't work
 Downloading Playlists is currently not supported.
