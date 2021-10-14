@@ -22,7 +22,7 @@ Downloading Playlists is currently not supported.
 ## Minimum requirements
 - Web server
 - PHP (Tested on >=PHP7.3)
-- youtube-dl
+- youtube-dlp
 - FFmpeg
 
 You can set a contact email, Name or whatever you want in the __footer__ of the __index.php__.

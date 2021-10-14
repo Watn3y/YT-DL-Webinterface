@@ -22,27 +22,27 @@ $URL = $_POST["URL"];
 
 switch ($audioFormat) {
     case 'mp3':
-        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
         $audioFormat = 'mp3';
         break;
 
     case 'm4a':
-        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
         break;
 
     case 'opus':
-        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
 
     case 'mp4':
-        $query = "youtube-dl --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format mp4";
+        $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format mp4";
         $audioFormat = 'mp4';
         break;
 
     default:
-        $query = "youtube-dl --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
 }
