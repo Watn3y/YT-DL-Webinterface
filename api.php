@@ -54,7 +54,7 @@ if ($isLinkValid) {
     header("Location: index.php");
 }
 
-function logF($text)
+function logF($text): void
 {
     file_put_contents('log.txt', $text . PHP_EOL, FILE_APPEND | LOCK_EX);
 }

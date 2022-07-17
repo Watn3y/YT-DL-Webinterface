@@ -87,10 +87,3 @@ input[type=reset]:hover {
   background-color: #ffffffda;
 }
 
-.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 150px;
-  width: 100%;
-}

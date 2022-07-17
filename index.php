@@ -43,14 +43,13 @@ session_destroy();
     </div>
   </form>
   <footer class="footer">
-    <p></p>
+    <p><a href="https://github.com/Watn3y/YT-DL-Webinterface">Github</a></p>
 
 
     <script>
       function send() {
         document.getElementById("form").submit();
         document.getElementById("form").reset();
-
       }
     </script>
 </body>
