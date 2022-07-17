@@ -1,8 +1,8 @@
 ## YT-DL-Webinterface
 A simple and fast web interface for downloading music using [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 
-Copyright (C) 2021 [Watn3y](https://github.com/Watn3y/)
-Copyright (C) 2021 [AlexZorzi](https://github.com/AlexZorzi)
+Copyright (C) 2022 [Watn3y](https://github.com/Watn3y/)
+Copyright (C) 2022 [AlexZorzi](https://github.com/AlexZorzi)
 
 > Licensed under [EUPL v1.2](https://github.com/Watn3y/YT-DL-Webinterface/blob/master/LICENSE)
 
