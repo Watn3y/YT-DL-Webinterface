@@ -22,27 +22,27 @@ $URL = $_POST["URL"];
 
 switch ($audioFormat) {
     case 'mp3':
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
         $audioFormat = 'mp3';
         break;
 
     case 'm4a':
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
         break;
 
     case 'opus':
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
 
     case 'mp4':
-        $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.%(ext)s\" --format mp4";
+        $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format mp4";
         $audioFormat = 'mp4';
         break;
 
     default:
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --output \"files/%(title)s.%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
+        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
         $audioFormat = 'ogg';
         break;
 }
@@ -51,15 +51,18 @@ $isLinkValid = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&
 if ($isLinkValid) {
     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $URL, $match);
     $youtube_id = $match[1];
-    $output = glob("files/*.$youtube_id.$audioFormat");
+    $output = glob("files/$youtube_id.$audioFormat");
     if (count($output) == 0) {
-        exec($query . " " . $URL);
+       $title =  exec($query . " " . $URL);
+    } else {
+        $title =  exec("yt-dlp --print title --quiet $youtube_id" );
     }
-    $filename = glob("files/*.$youtube_id.$audioFormat")[0];
+    $filename = "files/$youtube_id.$audioFormat";
     header("Content-type: octet/stream; charset=utf-8");
-    header("Content-disposition: attachment; filename=" . str_replace($youtube_id . ".", "", $filename) . ";");
+    header("Content-disposition: attachment; filename=" . "$title" . "." . "$audioFormat");
     header("Content-Length: " . filesize($filename));
     readfile($filename);
+
 } else {
     $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>';
     header("Location: index.php");
