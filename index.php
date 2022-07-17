@@ -30,9 +30,7 @@ session_destroy();
     <div class="form"></div>
     <select id="format" name="audioformat">
       <optgroup label="Audio">
-      <option value="opus" default>opus</option>
-      <option value="mp3">mp3</option>
-      <option value="m4a">m4a</option>
+      <option value="m4a" default>m4a</option>
       </optgroup>
        <optgroup label="Video">
       <option value="mp4">mp4</option>

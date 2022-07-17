@@ -21,19 +21,9 @@ $URL = $_POST["URL"];
 
 
 switch ($audioFormat) {
-    case 'mp3':
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format bestaudio --extract-audio --audio-quality 4 --audio-format mp3";
-        $audioFormat = 'mp3';
-        break;
-
     case 'm4a':
         $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
-        break;
-
-    case 'opus':
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
-        $audioFormat = 'ogg';
         break;
 
     case 'mp4':
