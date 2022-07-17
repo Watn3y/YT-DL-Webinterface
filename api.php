@@ -40,11 +40,6 @@ switch ($audioFormat) {
         $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format mp4";
         $audioFormat = 'mp4';
         break;
-
-    default:
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.ogg\" --format \"bestaudio[ext=webm]\"";
-        $audioFormat = 'ogg';
-        break;
 }
 
 $isLinkValid = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $URL);
