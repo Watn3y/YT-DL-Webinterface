@@ -22,12 +22,12 @@ $URL = $_POST["URL"];
 
 switch ($audioFormat) {
     case 'm4a':
-        $query = "yt-dlp --no-playlist --max-filesize 100m --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
+        $query = "yt-dlp --no-playlist --max-filesize --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
         break;
 
     case 'mp4':
-        $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestvideo[ext=mp4]+bestaudio[ext=m4a]\"";
+        $query = "yt-dlp --no-playlist --max-filesize --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestvideo[ext=mp4]+bestaudio[ext=m4a]\"";
         $audioFormat = 'mp4';
         break;
 }
