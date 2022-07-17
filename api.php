@@ -27,7 +27,7 @@ switch ($audioFormat) {
         break;
 
     case 'mp4':
-        $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format mp4";
+        $query = "yt-dlp --no-playlist --max-filesize 1G --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestvideo[ext=mp4]+bestaudio[ext=m4a]\"";
         $audioFormat = 'mp4';
         break;
 }
