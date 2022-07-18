@@ -20,11 +20,17 @@ if ($errFormat || $errURL) {
 $audioFormat = $_POST["audioformat"];
 $URL = $_POST["URL"];
 
+if ($audioFormat == 'link'){
+    error_log("this is a link");
+}
 
 switch ($audioFormat) {
     case 'm4a':
         $query = "yt-dlp --no-playlist --max-filesize --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
+        break;
+    case 'link':
+        $query = "yt-dlp --no-playlist --quiet --get-url --format \"bestaudio[ext=m4a]\"";
         break;
 
     case 'mp4':
@@ -37,17 +43,23 @@ $isLinkValid = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&
 if ($isLinkValid) {
     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $URL, $match);
     $youtube_id = $match[1];
-    $output = glob("files/$youtube_id.$audioFormat");
-    if (count($output) == 0) {
-       $title =  exec($query . " " . $URL);
+    if ($audioFormat == 'link'){
+        $linkURL =  exec($query . " " . $URL);
+        header("Location: ". $linkURL);
     } else {
-        $title =  exec("yt-dlp --print title --quiet $youtube_id" );
+        $output = glob("files/$youtube_id.$audioFormat");
+        if (count($output) == 0) {
+            $title =  exec($query . " " . $URL);
+        } else {
+            $title =  exec("yt-dlp --print title --quiet $youtube_id" );
+        }
+        $filename = "files/$youtube_id.$audioFormat";
+        header("Content-type: octet/stream; charset=utf-8");
+        header("Content-disposition: attachment; filename=" . "$title" . "." . "$audioFormat");
+        header("Content-Length: " . filesize($filename));
+        readfile($filename);
     }
-    $filename = "files/$youtube_id.$audioFormat";
-    header("Content-type: octet/stream; charset=utf-8");
-    header("Content-disposition: attachment; filename=" . "$title" . "." . "$audioFormat");
-    header("Content-Length: " . filesize($filename));
-    readfile($filename);
+
 
 } else {
     $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>';
