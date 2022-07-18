@@ -1,5 +1,4 @@
 <?php
-ini_set('memory_limit', '-1');
 session_start();
 $errFormat = false;
 $errURL = false;
@@ -26,7 +25,7 @@ if ($audioFormat == 'link'){
 
 switch ($audioFormat) {
     case 'm4a':
-        $query = "yt-dlp --no-playlist --max-filesize --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
+        $query = "yt-dlp --no-playlist --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
         break;
     case 'link':
@@ -34,7 +33,7 @@ switch ($audioFormat) {
         break;
 
     case 'mp4':
-        $query = "yt-dlp --no-playlist --max-filesize --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestvideo[ext=mp4]+bestaudio[ext=m4a]\"";
+        $query = "yt-dlp --no-playlist --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestvideo[ext=mp4]+bestaudio[ext=m4a]\"";
         $audioFormat = 'mp4';
         break;
 }
