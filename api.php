@@ -28,10 +28,6 @@ switch ($audioFormat) {
         $query = "yt-dlp --no-playlist --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestaudio[ext=m4a]\"";
         $audioFormat = 'm4a';
         break;
-    case 'link':
-        $query = "yt-dlp --no-playlist --quiet --get-url --format \"bestaudio[ext=m4a]\"";
-        break;
-
     case 'mp4':
         $query = "yt-dlp --no-playlist --add-metadata --prefer-ffmpeg --print title --no-simulate --quiet --output \"files/%(id)s.%(ext)s\" --format \"bestvideo[ext=mp4]+bestaudio[ext=m4a]\"";
         $audioFormat = 'mp4';
@@ -42,10 +38,6 @@ $isLinkValid = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&
 if ($isLinkValid) {
     preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $URL, $match);
     $youtube_id = $match[1];
-    if ($audioFormat == 'link'){
-        $linkURL =  exec($query . " " . $URL);
-        header("Location: ". $linkURL);
-    } else {
         $output = glob("files/$youtube_id.$audioFormat");
         if (count($output) == 0) {
             $title =  exec($query . " " . $URL);
@@ -57,9 +49,6 @@ if ($isLinkValid) {
         header("Content-disposition: attachment; filename=" . "$title" . "." . "$audioFormat");
         header("Content-Length: " . filesize($filename));
         readfile($filename);
-    }
-
-
 } else {
     $_SESSION["error_URL"] = '<script>alert("Please specify a valid URL")</script>';
     header("Location: index.php");

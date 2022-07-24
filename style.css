@@ -43,47 +43,34 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-select {
-  width: 20%;
+button[type=submit] {
+  width: 49%;
   background-color: #ffffff;
+  color: #000000;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color: #ffffffda;
+}
+
+button[type=reset] {
+  width: 20%;
   padding: 12px 20px;
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 1px;
   box-sizing: border-box;
-  cursor: pointer;
-}
-
-select:hover {
-  background-color: #ffffffda;
-}
-input[type=button] {
-  width: 49%;
   background-color: #ffffff;
   color: #000000;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 1px;
   cursor: pointer;
 }
 
-input[type=button]:hover {
-  background-color: #ffffffda;
-}
-
-input[type=reset] {
-  width: 49%;
-  background-color: #ffffff;
-  color: #000000;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 1px;
-  cursor: pointer;
-}
-
-input[type=reset]:hover {
+button[type=reset]:hover {
   background-color: #ffffffda;
 }
 
